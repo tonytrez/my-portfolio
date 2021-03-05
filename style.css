@@ -22,6 +22,25 @@ body {
     position: absolute;
 }
 
+.sprite {
+    opacity: 0;
+    border: solid 1px blue;
+    padding: .625rem;
+    background-color: rgba(0, 0, 255, 0.651);
+    color: white;
+    border-radius: .625rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.is-active {
+    opacity: 1;
+    transform: translateY(-20px);
+    transform: translateX(10px);
+}
+
 .ok {
     text-align: right;
     display: inline;
