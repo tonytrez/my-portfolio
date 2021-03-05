@@ -3,4 +3,27 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.instruction {
+    border: solid 1px blue;
+    padding: .625rem;
+    background-color: rgba(0, 0, 255, 0.651);
+    color: white;
+    border-radius: .625rem;
+    z-index: 1;
+    position: absolute;
+}
+
+.ok {
+    text-align: right;
+    display: inline;
+    margin-left: 6rem;
 }

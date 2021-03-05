@@ -1,8 +1,13 @@
+let form = document.querySelector('.instruction');
+window.addEventListener('click', function(e){
+    form.classList.add('hidden');
+})
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const geometry = new THREE.SphereGeometry( 50, 32, 32 );
-const texture = new THREE.TextureLoader().load('images/office.jpg');
+const geometry = new THREE.SphereGeometry( 10, 32, 32 );
+const texture = new THREE.TextureLoader().load('images/office3d.jpeg');
 texture.wrapS = THREE.RepeatWrapping;
 texture.repeat.x = -1;
 const material = new THREE.MeshBasicMaterial( {
@@ -17,10 +22,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
-controls.minPolarAngle = 1.1;
-controls.maxPolarAngle = 1.9;
-controls.minAzimuthAngle = 3;
-controls.maxAzimuthAngle = 0.1;
 controls.enableZoom = false;
 controls.rotateSpeed = 0.5;
 camera.position.set(-1, 0, 0);
