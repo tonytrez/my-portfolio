@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
 }
 
 .hidden {
@@ -13,32 +14,61 @@ body {
 }
 
 .instruction {
-    border: solid 1px blue;
+    border: solid 1px transparent; 
     padding: .625rem;
-    background-color: rgba(0, 0, 255, 0.651);
-    color: white;
+    background-color: rgba(112, 112, 128, 0.651);
+    box-shadow: 10px 11px 18px 1px;
     border-radius: .625rem;
     z-index: 1;
     position: absolute;
 }
 
+.instruction-image {
+    width: 3.125rem;
+    height: auto;
+}
+
+progress {
+    display: block;
+}
+
 .sprite {
+    display: none;
     opacity: 0;
-    border: solid 1px blue;
+    border: solid 1px transparent;
     padding: .625rem;
-    background-color: rgba(0, 0, 255, 0.651);
-    color: white;
+    background-color: rgba(112, 112, 128, 0.9);
+    box-shadow: 10px 11px 18px 1px;
     border-radius: .625rem;
     position: absolute;
     top: 0;
     left: 0;
-    transition: opacity 0.5s, transform 0.5s;
+    transition: all 0.5s;
 }
 
-.is-active {
+.sprite:hover {
+    display: inline-block;
+    opacity: 1;
+}
+
+#presentation {
+    width: 25%;
+}
+
+.photo {
+    width: 12.5rem;
+    height: auto;
+    float: left;
+}
+
+.opacity {
     opacity: 1;
     transform: translateY(-20px);
     transform: translateX(10px);
+}
+
+.is-active {
+    display: inline-block;
 }
 
 .ok {

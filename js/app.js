@@ -3,7 +3,9 @@ window.addEventListener('click', function(e){
     form.classList.add('hidden');
 })
 
-const starWars = document.querySelector('.sprite');
+const presentation = document.querySelector('#presentation');
+const hobbies = document.querySelector('#hobbies');
+const skills = document.querySelector('#skills');
 const container = document.querySelector('body');
 
 // scene init
@@ -12,7 +14,7 @@ const camera = new THREE.PerspectiveCamera( 110, window.innerWidth / window.inne
 
 // sphere
 const geometry = new THREE.SphereGeometry( 50, 32, 32 );
-const texture = new THREE.TextureLoader().load('images/22.jpg');
+const texture = new THREE.TextureLoader().load('images/office.jpg');
 texture.wrapS = THREE.RepeatWrapping;
 texture.repeat.x = -1;
 const material = new THREE.MeshBasicMaterial( {
@@ -72,44 +74,76 @@ function onClick(e) {
         }
     });
 
-    /**
-         Add sprite with intersects
+        // Add sprite with intersects
 
-        let intersects = rayCaster.intersectObject(sphere);
-        if(intersects.length > 0) {
-        console.log(intersects[0].point);
-        addSprite(intersects[0].point);
-        }
-    */ 
+        // let intersects = rayCaster.intersectObject(sphere);
+        // if(intersects.length > 0) {
+        // console.log(intersects[0].point);
+        // addSprite(intersects[0].point);
+        // }
 }
 
-let spriteIsActive = false;
 
+/**
+ *  Detect mouse hover the stripes
+ * @param {event} e 
+ */
 function onMouseMove(e) {
     let mouse = new THREE.Vector2(
         ( e.clientX / window.innerWidth ) * 2 - 1,
         - ( e.clientY / window.innerHeight ) * 2 + 1
-    );
+        );
     rayCaster.setFromCamera(mouse, camera);
+
+    let spriteIsActive = false;
     let foundSprite = false;
     let intersects = rayCaster.intersectObjects(scene.children);
+
+    // Display tooltip for the named stripe 
     intersects.forEach(intersect => {
-        if(intersect.object.type === 'Sprite') {
+        if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite') {
             let p = intersect.object.position.clone().project(camera);
-            starWars.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-            starWars.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-            starWars.classList.add('is-active');
+            skills.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            skills.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            skills.classList.add('is-active');
+            setTimeout(function(){
+                skills.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'hobbies' && intersect.object.type === 'Sprite') {
+            let p = intersect.object.position.clone().project(camera);
+            hobbies.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            hobbies.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            hobbies.classList.add('is-active');
+            setTimeout(function(){
+                hobbies.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite') {
+            let p = intersect.object.position.clone().project(camera);
+            presentation.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            presentation.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            presentation.classList.add('is-active');
+            setTimeout(function(){
+                presentation.classList.add('opacity');
+            }, 0.1);
             spriteIsActive = true;
             foundSprite = true;
         }
     });
     if(foundSprite === false && spriteIsActive) {
-        starWars.classList.remove('is-active');
+        presentation.classList.remove('is-active', 'opacity');
+        skills.classList.remove('is-active', 'opacity');
+        hobbies.classList.remove('is-active', 'opacity');
     }
-
 }
 
-addSprite(new THREE.Vector3(44.20589230137809, 12.195792476384847, -19.53438912600601), 'star-wars');
+
+addSprite(new THREE.Vector3(44.20589230137809, 12.195792476384847, -19.53438912600601), 'presentation');
+addSprite(new THREE.Vector3(25.65603108948047, 7.616022495239612, -41.981803818297344), 'hobbies');
+addSprite(new THREE.Vector3(16.650711157432735, -12.790775277011582, 45.15725580746167), 'skills');
 
 window.addEventListener('resize', onResize);
 container.addEventListener('click', onClick);
