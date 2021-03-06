@@ -83,23 +83,19 @@ function onClick(e) {
         // }
 }
 
+let spriteIsActive = false;
 
 /**
  *  Detect mouse hover the stripes
- * @param {event} e 
  */
 function onMouseMove(e) {
     let mouse = new THREE.Vector2(
         ( e.clientX / window.innerWidth ) * 2 - 1,
         - ( e.clientY / window.innerHeight ) * 2 + 1
-        );
+    );
     rayCaster.setFromCamera(mouse, camera);
-
-    let spriteIsActive = false;
     let foundSprite = false;
     let intersects = rayCaster.intersectObjects(scene.children);
-
-    // Display tooltip for the named stripe 
     intersects.forEach(intersect => {
         if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite') {
             let p = intersect.object.position.clone().project(camera);
