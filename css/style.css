@@ -13,6 +13,14 @@ body {
     visibility: hidden;
 }
 
+.visible {
+    display: inline-block !important ;
+}
+
+.opacity-contact {
+    opacity: 1 !important ;
+}
+
 .instruction {
     border: solid 1px transparent; 
     padding: .625rem;
@@ -23,9 +31,29 @@ body {
     position: absolute;
 }
 
-.instruction-image {
-    width: 3.125rem;
+.mouse-gif {
+    width: 6.25rem;
     height: auto;
+}
+
+.instruction-image {
+    width: 2.5rem;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-cross:hover {
+    transform: scale(2, 2);
+    background-color: red;
 }
 
 progress {
@@ -71,8 +99,18 @@ progress {
     display: inline-block;
 }
 
-.ok {
-    text-align: right;
+.button-ok {
     display: inline;
     margin-left: 6rem;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#contact-form input,
+#contact-form textarea {
+    margin-bottom: .625rem;
 }
