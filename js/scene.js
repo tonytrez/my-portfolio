@@ -106,6 +106,7 @@ function onMouseMove(e) {
             let p = intersect.object.position.clone().project(camera);
             contact.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
             contact.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            contact.classList.remove('hidden');
             contact.classList.add('is-active');
             setTimeout(function(){
                 contact.classList.add('opacity');

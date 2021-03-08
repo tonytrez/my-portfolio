@@ -10,7 +10,7 @@ body {
 }
 
 .hidden {
-    visibility: hidden;
+    display: none !important;
 }
 
 .visible {
@@ -51,13 +51,13 @@ body {
     justify-content: space-between;
 }
 
+.close-cross {
+    display: none;
+}
+
 .close-cross:hover {
     transform: scale(2, 2);
     background-color: red;
-}
-
-progress {
-    display: block;
 }
 
 .sprite {
@@ -99,9 +99,18 @@ progress {
     display: inline-block;
 }
 
+.button {
+    border-radius: .625rem;
+    transition: transform 0.5s;
+}
+
+.button:hover {
+    transform: scale(1.2, 1.2);
+}
+
 .button-ok {
-    display: inline;
-    margin-left: 6rem;
+    align-self: flex-end;
+    background-color: #00A000;
 }
 
 #contact-form {
@@ -113,4 +122,8 @@ progress {
 #contact-form input,
 #contact-form textarea {
     margin-bottom: .625rem;
+}
+
+#skills {
+    font-weight: bold;
 }

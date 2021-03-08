@@ -1,13 +1,17 @@
 var app = {
 
+    closeCross : document.querySelector('.close-cross'),
+    contact : document.querySelector('#contact'),
+
     init : function() {
         let inputs = document.querySelectorAll('.input');
         // Hidden the instruction card
         window.addEventListener('click', app.instructionHandler);
         // Contact card visibility management
         inputs.forEach(input => {
-            input.addEventListener('focus', app.contactHandler);
+            input.addEventListener('focus', app.contactFocusHandler);
         });
+        app.closeCross.addEventListener('click', app.contactCloseHandler);
 
     },
 
@@ -16,10 +20,17 @@ var app = {
         instruction.classList.add('hidden');
     },
     
-    contactHandler : function() {
-        let contact = document.querySelector('#contact');
-        contact.classList.add('visible', 'opacity-contact');
+    contactFocusHandler : function() {
+        app.contact.classList.add('visible', 'opacity-contact');
+        app.closeCross.classList.add('visible');
+    },
+
+    contactCloseHandler : function() {
+        app.contact.classList.remove('visible', 'opacity-contact');
+        app.closeCross.classList.remove('visible');
+        app.contact.classList.add('hidden');
     }
+
 }
 
 document.addEventListener('DOMContentLoaded', app.init);
