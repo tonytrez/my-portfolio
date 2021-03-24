@@ -2,6 +2,7 @@ const presentation = document.querySelector('#presentation');
 const contact = document.querySelector('#contact');
 const skills = document.querySelector('#skills');
 const container = document.querySelector('body');
+const portfolio = document.querySelector('#portfolio');
 
 // scene init
 const scene = new THREE.Scene();
@@ -69,7 +70,7 @@ function onClick(e) {
         }
     });
 
-        // Add sprite with intersects
+        //Add sprite with intersects (decomment next lines and comment line 65 to 70)
 
         // let intersects = rayCaster.intersectObject(sphere);
         // if(intersects.length > 0) {
@@ -123,12 +124,24 @@ function onMouseMove(e) {
             }, 0.1);
             spriteIsActive = true;
             foundSprite = true;
+        } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite') {
+            let p = intersect.object.position.clone().project(camera);
+            portfolio.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            portfolio.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            portfolio.classList.add('is-active');
+            setTimeout(function(){
+                portfolio.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
         }
+
     });
     if(foundSprite === false && spriteIsActive) {
         presentation.classList.remove('is-active', 'opacity');
         skills.classList.remove('is-active', 'opacity');
         contact.classList.remove('is-active', 'opacity');
+        portfolio.classList.remove('is-active', 'opacity');
     }
 }
 
@@ -136,6 +149,7 @@ function onMouseMove(e) {
 addSprite(new THREE.Vector3(44.20589230137809, 12.195792476384847, -19.53438912600601), 'presentation');
 addSprite(new THREE.Vector3(25.65603108948047, 7.616022495239612, -41.981803818297344), 'contact');
 addSprite(new THREE.Vector3(16.650711157432735, -12.790775277011582, 45.15725580746167), 'skills');
+addSprite(new THREE.Vector3(36.308094670303774, 7.813525968263457, 33.13894040549743), 'portfolio');
 
 window.addEventListener('resize', onResize);
 container.addEventListener('click', onClick);
