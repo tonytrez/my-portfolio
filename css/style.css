@@ -129,3 +129,17 @@ body {
 #skills {
     font-weight: bold;
 }
+.avignon-fest-off {
+    background-image: url("../images/avfest.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.container-hidden {
+    opacity: 0;
+}
+
+.container-hidden:hover {
+    opacity: 1;
+}
