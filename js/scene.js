@@ -40,7 +40,7 @@ container.appendChild( renderer.domElement );
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
 controls.rotateSpeed = 0.5;
-camera.position.set(-1, 0, 0); //TODO: -1 to 1 in prod
+camera.position.set(1, 0, 0);
 controls.update();
 
 function animate() {

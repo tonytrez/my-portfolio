@@ -207,3 +207,17 @@ body {
     padding: .125rem;
     margin-bottom: .125rem;
 }
+
+.error {
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    background-color: #ff0000;
+    border-radius: .3125rem;
+}
+
+.success {
+    background-color: #008000;
+    color: #ffffff;
+    font-weight: bold;
+}

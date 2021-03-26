@@ -9,9 +9,8 @@
         <title>Anthony Ammar - Développeur Web</title>
     </head>
     <body>
-        <!-- TODO: Uncomment in prod -->
         <!-- Instruction -->
-        <!-- <div class="instruction">
+        <div class="instruction">
             <div class="container">
                 <h1>Anthony Ammar</h1>
                 <h2>Développeur Web - PHP/SYMFONY</h2> 
@@ -20,7 +19,7 @@
                 <h3>Survolez les icones <img class="instruction-image" src="images/question.png" alt=""> pour avoir des infos supplémentaires</h3>
                 <button class="button button-ok">J'ai compris</button>
             </div>
-        </div> -->
+        </div>
 
         <!-- Presentation sprite -->
         <div id="presentation" class="sprite">
@@ -40,23 +39,26 @@
 
         <!-- Contact sprite -->
         <div id="contact" class="sprite">
-            <div class="container-inline">
-                <h3>Me contacter
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.2 5H4.8C3.81 5 3.009 5.81 3.009 6.8L3 17.6C3 18.59 3.81 19.4 4.8 19.4H19.2C20.19 19.4 21 18.59 21 17.6V6.8C21 5.81 20.19 5 19.2 5ZM19.2 17.6H4.8V8.6L12 13.1L19.2 8.6V17.6ZM4.8 6.8L12 11.3L19.2 6.8H4.8Z" fill="black"/>
-                    </svg>
-                </h3>
-                <svg class="close-cross" height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"><path d="m.5 10.5 10-10"/><path d="m10.5 10.5-10-10z"/></g></svg>
+            <div class="form-container">
+                <div class="container-inline">
+                    <h3>Me contacter
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.2 5H4.8C3.81 5 3.009 5.81 3.009 6.8L3 17.6C3 18.59 3.81 19.4 4.8 19.4H19.2C20.19 19.4 21 18.59 21 17.6V6.8C21 5.81 20.19 5 19.2 5ZM19.2 17.6H4.8V8.6L12 13.1L19.2 8.6V17.6ZM4.8 6.8L12 11.3L19.2 6.8H4.8Z" fill="black"/>
+                        </svg>
+                    </h3>
+                    <svg class="close-cross" height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"><path d="m.5 10.5 10-10"/><path d="m10.5 10.5-10-10z"/></g></svg>
+                </div>
+                <form id="contact-form">
+                    <input class="input" type="hidden" name="contact_number">
+                    <input class="input" type="text" id="user_name" name="user_name" required placeholder="Votre Nom">
+                    <input class="input" type="email" id="user_email" name="user_email" required placeholder="Votre adresse email"> 
+                    <textarea class="input" id="message" name="message" cols="30" rows="10" required placeholder="Votre message"></textarea>
+                    <div class="g-recaptcha" data-sitekey="6Lf0WJAaAAAAAHpxTFhIb_-7kj5o9fk_vDZeAPb3"></div>
+                    <input class="button button-ok" type="submit" value="Envoyer">
+                </form>
+                <div class="error"></div>
+                <i>Tous les champs sont obligatoires</i>
             </div>
-            <form id="contact-form">
-                <input class="input" type="hidden" name="contact-number">
-                <input class="input" type="text" id="user-name" name="user-name" required placeholder="Votre Nom">
-                <input class="input" type="email" id="user-email" name="user-email" required placeholder="Votre adresse email"> 
-                <textarea class="input" id="message" name="message" cols="30" rows="10" required placeholder="Votre message"></textarea>
-                <div class="g-recaptcha" data-sitekey="6Lf0WJAaAAAAAHpxTFhIb_-7kj5o9fk_vDZeAPb3"></div>
-                <input class="button button-ok" type="submit" value="Envoyer">
-            </form>
-            <i>Tous les champs sont obligatoires</i>
         </div>
 
         <!-- Skills sprite -->
