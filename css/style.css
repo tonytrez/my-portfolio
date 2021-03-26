@@ -48,7 +48,8 @@ body {
 
 .container-inline {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .close-cross {
@@ -129,32 +130,55 @@ body {
 #skills {
     font-weight: bold;
 }
+
+#skills img {
+    width: 150px;
+    height: 150px;
+}
+
+.symfo {
+    width: 100px !important;
+}
+
+#portfolio {
+    width: 41.8125rem;
+}
+
+.realisation h3,
+.realisation h4 {
+    margin-bottom: .125rem;
+}
+
 .realisation {
     width: 50%;
+    max-width: 300px;
     border-radius: .625rem;
-    transition: all 0.3s;
-    margin: auto .3125rem auto .3125rem;
+    transition: all 0.4s;
+    margin: .325rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #fefee2;
+    padding: .3125rem;
 }
 
 .realisation:hover {
     transform: scale(1.3, 1.3);
-    background-image: none;
-    
+    background-image: none !important;
+    transition: all 0.5s;
 }
 
-.avignon-fest-off {
+.realisation.avignon-fest-off {
     background-image: url("../images/avfest.png");
-    background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
-    background-color: #ffffff;
 }
 
 .wicked-needle {
     background-image: url("../images/wicked-needle.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+}
+
+.portfolio {
+    background-image: url("../images/portfolio.png");
 }
 
 
@@ -166,6 +190,20 @@ body {
     opacity: 1;
 }
 
+.container-hidden a {
+    display: block;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 .tags {
-    display: inline-block;
+    margin-right: 5px;
+    background-color: rgba(112, 112, 128, 0.651);
+    border: solid .0625rem transparent;
+    border-radius: .3125rem;
+    padding: .125rem;
+    margin-bottom: .125rem;
 }
