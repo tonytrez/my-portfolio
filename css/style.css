@@ -83,13 +83,19 @@ body {
 }
 
 #presentation {
-    width: 25%;
+    width: 35%;
+    text-align: justify;
+}
+
+#presentation p {
+    font-size: 1.1rem;
 }
 
 .photo {
     width: 12.5rem;
     height: auto;
     float: left;
+    margin-right: .625rem;
 }
 
 .opacity {
@@ -114,6 +120,19 @@ body {
 .button-ok {
     align-self: flex-end;
     background-color: #00A000;
+}
+
+.button-download {
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    width: 25%;
+    background-color: #ff0000;
+}
+
+.pdf {
+    width: 20%;
+    height: auto;
 }
 
 #contact-form {
