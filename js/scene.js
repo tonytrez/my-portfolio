@@ -50,7 +50,12 @@ container.appendChild( renderer.domElement );
 // controls
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
-controls.rotateSpeed = 0.5;
+if (window.innerWidth < 1024) {
+    controls.rotateSpeed = -0.5;
+} else {
+    controls.rotateSpeed = 0.5;
+}
+
 camera.position.set(1, 0, 0);
 controls.update();
 

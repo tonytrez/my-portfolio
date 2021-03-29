@@ -18,7 +18,6 @@ var app = {
     instructionHandler : function(e) {
         let element = e.target.parentNode.parentNode;
         element.classList.add('hidden');
-        console.log(element);
     },
 
     contactCloseHandler : function() {
