@@ -32,6 +32,10 @@ body {
     font-size: 1.4rem;
 }
 
+.mobile {
+    display: none;
+}
+
 .mouse-gif {
     width: 6.25rem;
     height: auto;
@@ -72,8 +76,8 @@ body {
     box-shadow: 10px 11px 18px 1px;
     border-radius: .625rem;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 25%;
+    left: 50%;
     transition: all 0.5s;
 }
 
@@ -87,7 +91,7 @@ body {
 }
 
 .photo {
-    width: 12.5rem;
+    width: 40%;
     height: auto;
     float: left;
     margin-right: .625rem;
@@ -178,6 +182,10 @@ body {
     transition: all 0.5s;
 }
 
+.realisation a {
+    width: fit-content;
+}
+
 .avignon-fest-off {
     background-image: url("../images/avfest.png");
     background-size: contain;
@@ -230,4 +238,60 @@ body {
     background-color: #008000;
     color: #ffffff;
     font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) {
+
+    #contact {
+        width: 90%;
+        left: 10%;
+        top: 2%;
+    }
+
+    #presentation {
+        width: 90%;
+        left: 10%;
+        top: 2%;
+        height: 90%;
+        overflow: scroll;
+    }
+
+    #portfolio {
+        width: 90%;
+        left: 10%;
+        top: 2%;
+        height: 90%;
+    }
+
+    #portfolio .container-inline.container-portfolio {
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    .realisation {
+        width: 100%;
+    }
+
+    .realisation:hover {
+        transform: none;
+    }
+
+    #skills {
+        width: 90%;
+        left: 10%;
+        top: 2%;
+        height: 90%;
+    }
+
+    .button-download {
+        width: 80%;
+    }
+
+    .instruction {
+        display: none;
+    }
+
+    .instruction.mobile {
+        display: inline-block;
+    }
 }
