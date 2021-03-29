@@ -20,11 +20,16 @@ body {
 .instruction {
     border: solid 1px transparent; 
     padding: .625rem;
-    background-color: rgba(112, 112, 128, 0.651);
+    background-color: rgba(112, 112, 128, 0.822);
     box-shadow: 10px 11px 18px 1px;
     border-radius: .625rem;
     z-index: 1;
     position: absolute;
+}
+
+.instruction p {
+    font-weight: bold;
+    font-size: 1.4rem;
 }
 
 .mouse-gif {

@@ -2,7 +2,7 @@ var app = {
 
     init : function() {
         // Hidden the instruction card
-        window.addEventListener('click', app.instructionHandler);
+        document.querySelector('.button-ok').addEventListener('click', app.instructionHandler);
         // close card handler
         document.querySelector('.contact-close-cross').addEventListener('click', app.contactCloseHandler);
         document.querySelector('.presentation-close-cross').addEventListener('click', app.presentationCloseHandler);
