@@ -5,6 +5,10 @@ const container = document.querySelector('body');
 const portfolio = document.querySelector('#portfolio');
 const download = document.querySelector('#download');
 const skillsTitle = document.querySelector('#skillsTitle');
+const presentationTitle = document.querySelector('#presentationTitle');
+const contactTitle = document.querySelector('#contactTitle');
+const portfolioTitle = document.querySelector('#portfolioTitle');
+const downloadTitle = document.querySelector('#downloadTitle');
 
 // scene init
 const scene = new THREE.Scene();
@@ -59,8 +63,8 @@ function onResize() {
 
 const rayCaster = new THREE.Raycaster();
 
-let spriteIsActive = false;
-let foundSprite = false;
+
+var visible = false;
 
 function onClick(e) {
     let mouse = new THREE.Vector2(
@@ -68,9 +72,10 @@ function onClick(e) {
         - ( e.clientY / window.innerHeight ) * 2 + 1
     );
     rayCaster.setFromCamera(mouse, camera);
+    
     let intersects = rayCaster.intersectObjects(scene.children);
     intersects.forEach(intersect => {
-        if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite') {
+        if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
             skills.style.top = window.innerHeight / 3 + 'px';
             skills.style.left = window.innerWidth / 3 + 'px';
@@ -79,9 +84,8 @@ function onClick(e) {
             setTimeout(function(){
                 skills.classList.add('opacity');
             }, 0.1);
-            spriteIsActive = true;
-            foundSprite = true;
-        } else if(intersect.object.name === 'contact' && intersect.object.type === 'Sprite') {
+            visible = true;
+        } else if(intersect.object.name === 'contact' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
             contact.style.top = window.innerHeight / 3 + 'px';
             contact.style.left = window.innerWidth / 3 + 'px';
@@ -90,9 +94,8 @@ function onClick(e) {
             setTimeout(function(){
                 contact.classList.add('opacity');
             }, 0.1);
-            spriteIsActive = true;
-            foundSprite = true;
-        } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite') {
+            visible = true;
+        } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
             presentation.style.top = window.innerHeight / 3 + 'px';
             presentation.style.left = window.innerWidth / 3 + 'px';
@@ -101,9 +104,8 @@ function onClick(e) {
             setTimeout(function(){
                 presentation.classList.add('opacity');
             }, 0.1);
-            spriteIsActive = true;
-            foundSprite = true;
-        } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite') {
+            visible = true;
+        } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
             portfolio.style.top = window.innerHeight / 3 + 'px';
             portfolio.style.left = window.innerWidth / 3 + 'px';
@@ -112,9 +114,8 @@ function onClick(e) {
             setTimeout(function(){
                 portfolio.classList.add('opacity');
             }, 0.1);
-            spriteIsActive = true;
-            foundSprite = true;
-        } else if(intersect.object.name === 'download' && intersect.object.type === 'Sprite') {
+            visible = true;
+        } else if(intersect.object.name === 'download' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
             download.style.top = window.innerHeight / 3 + 'px';
             download.style.left = window.innerWidth / 3 + 'px';
@@ -123,16 +124,8 @@ function onClick(e) {
             setTimeout(function(){
                 download.classList.add('opacity');
             }, 0.1);
-            spriteIsActive = true;
-            foundSprite = true;
+            visible = true;
         }
-        // if(foundSprite === false && spriteIsActive) {
-        //     presentation.classList.remove('is-active', 'opacity');
-        //     skills.classList.remove('is-active', 'opacity');
-        //     contact.classList.remove('is-active', 'opacity');
-        //     portfolio.classList.remove('is-active', 'opacity');
-        //     download.classList.remove('is-active', 'opacity');
-        // }
     });
 
         //Add sprite with intersects (decomment next lines and comment line 65 to 70)
@@ -144,82 +137,82 @@ function onClick(e) {
         // }
 }
 
+let spriteIsActive = false;
 
+/**
+ *  Detect mouse hover the stripes
+ */
+function onMouseMove(e) {
+    let mouse = new THREE.Vector2(
+        ( e.clientX / window.innerWidth ) * 2 - 1,
+        - ( e.clientY / window.innerHeight ) * 2 + 1
+    );
+    rayCaster.setFromCamera(mouse, camera);
+    let foundSprite = false;
+    let intersects = rayCaster.intersectObjects(scene.children);
+    intersects.forEach(intersect => {
+        if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite' && visible === false) {
+            let p = intersect.object.position.clone().project(camera);
+            skillsTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            skillsTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            skillsTitle.classList.add('is-active');
+            setTimeout(function(){
+                skillsTitle.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'contact' && intersect.object.type === 'Sprite' && visible === false) {
+            let p = intersect.object.position.clone().project(camera);
+            contactTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            contactTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            contactTitle.classList.remove('hidden');
+            contactTitle.classList.add('is-active');
+            setTimeout(function(){
+                contactTitle.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite' && visible === false) {
+            let p = intersect.object.position.clone().project(camera);
+            presentationTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            presentationTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            presentationTitle.classList.add('is-active');
+            setTimeout(function(){
+                presentationTitle.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite' && visible === false) {
+            let p = intersect.object.position.clone().project(camera);
+            portfolioTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            portfolioTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            portfolioTitle.classList.add('is-active');
+            setTimeout(function(){
+                portfolioTitle.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        } else if(intersect.object.name === 'download' && intersect.object.type === 'Sprite' && visible === false) {
+            let p = intersect.object.position.clone().project(camera);
+            downloadTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
+            downloadTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
+            downloadTitle.classList.add('is-active');
+            setTimeout(function(){
+                downloadTitle.classList.add('opacity');
+            }, 0.1);
+            spriteIsActive = true;
+            foundSprite = true;
+        }
 
-// /**
-//  *  Detect mouse hover the stripes
-//  */
-// function onMouseMove(e) {
-//     let mouse = new THREE.Vector2(
-//         ( e.clientX / window.innerWidth ) * 2 - 1,
-//         - ( e.clientY / window.innerHeight ) * 2 + 1
-//     );
-//     rayCaster.setFromCamera(mouse, camera);
-//     let foundSprite = false;
-//     let intersects = rayCaster.intersectObjects(scene.children);
-//     intersects.forEach(intersect => {
-//         if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite') {
-//             let p = intersect.object.position.clone().project(camera);
-//             skillsTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-//             skillsTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-//             skillsTitle.classList.add('is-active');
-//             setTimeout(function(){
-//                 skillsTitle.classList.add('opacity');
-//             }, 0.1);
-//             spriteIsActive = true;
-//             foundSprite = true;
-//         } else if(intersect.object.name === 'contact' && intersect.object.type === 'Sprite') {
-//             let p = intersect.object.position.clone().project(camera);
-//             contactTitle.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-//             contactTitle.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-//             contactTitle.classList.remove('hidden');
-//             contactTitle.classList.add('is-active');
-//             setTimeout(function(){
-//                 contactTitle.classList.add('opacity');
-//             }, 0.1);
-//             spriteIsActive = true;
-//             foundSprite = true;
-//         } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite') {
-//             let p = intersect.object.position.clone().project(camera);
-//             presentation.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-//             presentation.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-//             presentation.classList.add('is-active');
-//             setTimeout(function(){
-//                 presentation.classList.add('opacity');
-//             }, 0.1);
-//             spriteIsActive = true;
-//             foundSprite = true;
-//         } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite') {
-//             let p = intersect.object.position.clone().project(camera);
-//             portfolio.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-//             portfolio.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-//             portfolio.classList.add('is-active');
-//             setTimeout(function(){
-//                 portfolio.classList.add('opacity');
-//             }, 0.1);
-//             spriteIsActive = true;
-//             foundSprite = true;
-//         } else if(intersect.object.name === 'download' && intersect.object.type === 'Sprite') {
-//             let p = intersect.object.position.clone().project(camera);
-//             download.style.top = ((-1 * p.y + 1) * window.innerHeight / 2) + 'px';
-//             download.style.left = ((p.x +1) * window.innerWidth / 2) + 'px';
-//             download.classList.add('is-active');
-//             setTimeout(function(){
-//                 download.classList.add('opacity');
-//             }, 0.1);
-//             spriteIsActive = true;
-//             foundSprite = true;
-//         }
-
-//     });
-//     if(foundSprite === false && spriteIsActive) {
-//         presentation.classList.remove('is-active', 'opacity');
-//         skillsTitle.classList.remove('is-active', 'opacity');
-//         contact.classList.remove('is-active', 'opacity');
-//         portfolio.classList.remove('is-active', 'opacity');
-//         download.classList.remove('is-active', 'opacity');
-//     }
-//}
+    });
+    if(foundSprite === false && spriteIsActive) {
+        presentationTitle.classList.remove('is-active', 'opacity');
+        skillsTitle.classList.remove('is-active', 'opacity');
+        contactTitle.classList.remove('is-active', 'opacity');
+        portfolioTitle.classList.remove('is-active', 'opacity');
+        downloadTitle.classList.remove('is-active', 'opacity');
+    }
+}
 
 
 addSprite(new THREE.Vector3(44.20589230137809, 12.195792476384847, -19.53438912600601), 'presentation');
