@@ -21,30 +21,35 @@ var app = {
         let contact = document.querySelector('#contact')
         contact.classList.remove('visible');
         contact.classList.add('hidden');
+        visible = false;
     },
 
     presentationCloseHandler : function() {
         let presentation = document.querySelector('#presentation')
         presentation.classList.remove('visible');
         presentation.classList.add('hidden');
+        visible = false;
     },
 
     skillsCloseHandler : function() {
         let skills = document.querySelector('#skills')
         skills.classList.remove('visible');
         skills.classList.add('hidden');
+        visible = false;
     },
 
     portfolioCloseHandler : function() {
         let portfolio = document.querySelector('#portfolio')
         portfolio.classList.remove('visible');
         portfolio.classList.add('hidden');
+        visible = false;
     },
 
     downloadCloseHandler : function() {
         let download = document.querySelector('#download')
         download.classList.remove('visible');
         download.classList.add('hidden');
+        visible = false;
     }
 
 }
