@@ -33,7 +33,12 @@ function addSprite(position, name) {
     let sprite = new THREE.Sprite( spriteMaterial );
     sprite.name = name;
     sprite.position.copy(position.clone().normalize().multiplyScalar(30));
-    sprite.scale.multiplyScalar(2.2);
+    if (window.innerWidth < 1024) {
+        sprite.scale.multiplyScalar(3.2);
+    } else {
+        sprite.scale.multiplyScalar(2.2);
+    }
+    
     scene.add( sprite );
 }
 
