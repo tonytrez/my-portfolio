@@ -66,19 +66,13 @@ const rayCaster = new THREE.Raycaster();
 
 var visible = false;
 
-function onClick(e) {
-    let mouse = new THREE.Vector2(
-        ( e.clientX / window.innerWidth ) * 2 - 1,
-        - ( e.clientY / window.innerHeight ) * 2 + 1
-    );
-    rayCaster.setFromCamera(mouse, camera);
-    
+function displayOnIntersect() {
     let intersects = rayCaster.intersectObjects(scene.children);
     intersects.forEach(intersect => {
         if(intersect.object.name === 'skills' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
-            skills.style.top = window.innerHeight / 3 + 'px';
-            skills.style.left = window.innerWidth / 3 + 'px';
+            // skills.style.top = window.innerHeight / 3 + 'px';
+            // skills.style.left = window.innerWidth / 3 + 'px';
             skills.classList.remove('hidden');
             skills.classList.add('is-active');
             setTimeout(function(){
@@ -87,8 +81,8 @@ function onClick(e) {
             visible = true;
         } else if(intersect.object.name === 'contact' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
-            contact.style.top = window.innerHeight / 3 + 'px';
-            contact.style.left = window.innerWidth / 3 + 'px';
+            // contact.style.top = window.innerHeight / 5 + 'px';
+            // contact.style.left = window.innerWidth / 3 + 'px';
             contact.classList.remove('hidden');
             contact.classList.add('is-active');
             setTimeout(function(){
@@ -97,8 +91,8 @@ function onClick(e) {
             visible = true;
         } else if(intersect.object.name === 'presentation' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
-            presentation.style.top = window.innerHeight / 3 + 'px';
-            presentation.style.left = window.innerWidth / 3 + 'px';
+            // presentation.style.top = window.innerHeight / 3 + 'px';
+            // presentation.style.left = window.innerWidth / 3 + 'px';
             presentation.classList.remove('hidden');
             presentation.classList.add('is-active');
             setTimeout(function(){
@@ -107,8 +101,8 @@ function onClick(e) {
             visible = true;
         } else if(intersect.object.name === 'portfolio' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
-            portfolio.style.top = window.innerHeight / 3 + 'px';
-            portfolio.style.left = window.innerWidth / 3 + 'px';
+            // portfolio.style.top = window.innerHeight / 3 + 'px';
+            // portfolio.style.left = window.innerWidth / 3 + 'px';
             portfolio.classList.remove('hidden');
             portfolio.classList.add('is-active');
             setTimeout(function(){
@@ -117,8 +111,8 @@ function onClick(e) {
             visible = true;
         } else if(intersect.object.name === 'download' && intersect.object.type === 'Sprite' && visible === false) {
             let p = intersect.object.position.clone().project(camera);
-            download.style.top = window.innerHeight / 3 + 'px';
-            download.style.left = window.innerWidth / 3 + 'px';
+            // download.style.top = window.innerHeight / 3 + 'px';
+            // download.style.left = window.innerWidth / 3 + 'px';
             download.classList.remove('hidden');
             download.classList.add('is-active');
             setTimeout(function(){
@@ -127,7 +121,16 @@ function onClick(e) {
             visible = true;
         }
     });
+}
 
+function onClick(e) {
+    
+    let mouse = new THREE.Vector2(
+        ( e.clientX / window.innerWidth ) * 2 - 1,
+        - ( e.clientY / window.innerHeight ) * 2 + 1
+    );
+    rayCaster.setFromCamera(mouse, camera);
+    displayOnIntersect();
         //Add sprite with intersects (decomment next lines and comment line 65 to 70)
 
         // let intersects = rayCaster.intersectObject(sphere);
@@ -135,6 +138,15 @@ function onClick(e) {
         // console.log(intersects[0].point);
         // addSprite(intersects[0].point);
         // }
+}
+
+function onTouch(e) {
+    let touch = new THREE.Vector2(
+        ( e.changedTouches[0].clientX / window.innerWidth ) * 2 - 1,
+        - ( e.changedTouches[0].clientY / window.innerHeight ) * 2 + 1
+    );
+    rayCaster.setFromCamera(touch, camera);
+    displayOnIntersect();
 }
 
 let spriteIsActive = false;
@@ -224,3 +236,4 @@ addSprite(new THREE.Vector3(48.530593701017644, -10.796425452155306, -2.51479975
 window.addEventListener('resize', onResize);
 container.addEventListener('click', onClick);
 container.addEventListener('mousemove', onMouseMove);
+container.addEventListener('touchend', onTouch);

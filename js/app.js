@@ -2,7 +2,10 @@ var app = {
 
     init : function() {
         // Hidden the instruction card
-        document.querySelector('.button-ok').addEventListener('click', app.instructionHandler);
+        let buttons = document.querySelectorAll('.button-ok');
+        buttons.forEach(function(button) {
+            button.addEventListener('click', app.instructionHandler);
+        })
         // close card handler
         document.querySelector('.contact-close-cross').addEventListener('click', app.contactCloseHandler);
         document.querySelector('.presentation-close-cross').addEventListener('click', app.presentationCloseHandler);
@@ -12,9 +15,10 @@ var app = {
 
     },
 
-    instructionHandler : function() {
-        let instruction = document.querySelector('.instruction');
-        instruction.classList.add('hidden');
+    instructionHandler : function(e) {
+        let element = e.target.parentNode.parentNode;
+        element.classList.add('hidden');
+        console.log(element);
     },
 
     contactCloseHandler : function() {
