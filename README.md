@@ -8,13 +8,13 @@
 -->
 
 <!-- ABOUT THE PROJECT -->
-## A Propos
+## About
 
 [![Product Name Screen Shot][product-screenshot]](https://anthony-ammar.com)
 
-Mon portfolio de développeur web pour apprendre à mieux me connaitre.
+It's my developer potfolio.
 
-### Réalisé avec
+### Built With
 
 *  Three.js
 *  HTML/CSS
